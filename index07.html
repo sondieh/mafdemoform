@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rascunho Formulário MAF - Câmara Municipal</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow">
+    <h1 class="text-2xl font-bold mb-6">Formulário de Implementação do Módulo de Avisos & Fiscalização (MAF)</h1>
+    <form id="form-maf" action="#" method="POST">
+
+      <!-- Seção 1: Dados da Entidade -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">1. Dados da Entidade</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="nome_entidade">Nome da Entidade</label>
+            <input class="w-full border rounded p-2" type="text" id="nome_entidade" name="nome_entidade" placeholder="Ex: Câmara Municipal de Lisboa" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="num_entidade_ansr">Número de Entidade (ANSR)</label>
+            <input class="w-full border rounded p-2" type="text" id="num_entidade_ansr" name="num_entidade_ansr" placeholder="Ex: 12345" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="nipc">NIPC</label>
+            <input class="w-full border rounded p-2" type="text" id="nipc" name="nipc" placeholder="Ex: 501234567" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="capital_social">Capital Social</label>
+            <input class="w-full border rounded p-2" type="text" id="capital_social" name="capital_social" placeholder="Ex: €100.000" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="endereco">Endereço</label>
+            <input class="w-full border rounded p-2" type="text" id="endereco" name="endereco" placeholder="Rua Exemplo, 123, Lisboa" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="logo">Logótipo (upload)</label>
+            <input class="w-full" type="file" id="logo" name="logo" accept="image/*">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 2: Contacto -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">2. Contacto</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="gestor_nome">Nome do Gestor</label>
+            <input class="w-full border rounded p-2" type="text" id="gestor_nome" name="gestor_nome" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="gestor_email">Email Institucional</label>
+            <input class="w-full border rounded p-2" type="email" id="gestor_email" name="gestor_email" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="gestor_telefone">Telefone</label>
+            <input class="w-full border rounded p-2" type="tel" id="gestor_telefone" name="gestor_telefone" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 3: Infraestrutura TI -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">3. Infraestrutura e Ambiente TI</legend>
+        <div class="mb-4">
+          <label class="block font-medium">Ambiente de Alojamento</label>
+          <select class="w-full border rounded p-2" name="ambiente_alojamento">
+            <option value="cloud">Cloud (especificar fornecedor)</option>
+            <option value="on_premises">On-Premises</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="firewall_vpn">Firewall/VPN</label>
+            <input class="w-full border rounded p-2" type="text" id="firewall_vpn" name="firewall_vpn" placeholder="Ex: Rede Privada VLAN">
+          </div>
+          <div>
+            <label class="block font-medium" for="ssl_certificados">Certificados SSL/TLS</label>
+            <select class="w-full border rounded p-2" id="ssl_certificados" name="ssl_certificados">
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 4: Integrações de Pagamento e API -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">4. Integrações de Pagamento e API</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="sibs_api_url">URL de Acesso da API SIBS</label>
+            <input class="w-full border rounded p-2" type="url" id="sibs_api_url" name="sibs_api_url" placeholder="https://api.sibs.pt/v1/payments" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="sibs_token_prod">Token Ambiente Produção</label>
+            <input class="w-full border rounded p-2" type="text" id="sibs_token_prod" name="sibs_token_prod" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="sibs_token_qa">Token Ambiente Qualidade</label>
+            <input class="w-full border rounded p-2" type="text" id="sibs_token_qa" name="sibs_token_qa" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="sibs_swagger">Swagger API (upload)</label>
+            <input class="w-full" type="file" id="sibs_swagger" name="sibs_swagger" accept=".json,.yaml">
+          </div>
+          <div>
+            <label class="block font-medium" for="client_id">Client ID</label>
+            <input class="w-full border rounded p-2" type="text" id="client_id" name="client_id" required>
+          </div>
+          <div>
+            <label class="block font-medium" for="terminal_id">Terminal ID</label>
+            <input class="w-full border rounded p-2" type="text" id="terminal_id" name="terminal_id" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 5: Hardware Móvel e Impressão -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">5. Hardware Móvel e Impressão</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="smartphones">Smartphones Android (modelos e OS)</label>
+            <input class="w-full border rounded p-2" type="text" id="smartphones" name="smartphones" placeholder="Ex: Samsung A12, Android 11">
+          </div>
+          <div>
+            <label class="block font-medium" for="impressoras">Impressoras Portáteis (modelo e protocolo)</label>
+            <input class="w-full border rounded p-2" type="text" id="impressoras" name="impressoras" placeholder="Ex: Zebra ZQ220, Bluetooth">
+          </div>
+          <div>
+            <label class="block font-medium" for="qr_leitura">Sistema de Leitura de QR Code</label>
+            <input class="w-full border rounded p-2" type="text" id="qr_leitura" name="qr_leitura" placeholder="Ex: Câmara embutida + fallback fotografia">
+          </div>
+          <div>
+            <label class="block font-medium" for="suporte_offline">Suporte Offline Necessário?</label>
+            <select class="w-full border rounded p-2" id="suporte_offline" name="suporte_offline">
+              <option value="sim">Sim</option>
+              <option value="nao">Não</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 6: Definição de Zonas e Rotas -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">6. Definição de Zonas e Rotas</legend>
+        <div class="mb-4">
+          <label class="block font-medium" for="num_zonas">Número de Zonas de Estacionamento</label>
+          <input class="w-full border rounded p-2" type="number" id="num_zonas" name="num_zonas">
+        </div>
+        <div class="mb-4">
+          <label class="block font-medium" for="mapa_base">Mapa Base a Utilizar</label>
+          <select class="w-full border rounded p-2" id="mapa_base" name="mapa_base">
+            <option value="openstreetmap">OpenStreetMap</option>
+            <option value="google_maps">Google Maps</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block font-medium" for="geojson">Lista de ruas/áreas (GeoJSON/KML)</label>
+          <input class="w-full" type="file" id="geojson" name="geojson" accept=".geojson,.kml">
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="vigencia_zonas">Datas e Horários de Vigência</label>
+            <textarea class="w-full border rounded p-2" id="vigencia_zonas" name="vigencia_zonas" rows="2"></textarea>
+          </div>
+          <div>
+            <label class="block font-medium" for="feriados">Feriados (upload calendário)</label>
+            <input class="w-full" type="file" id="feriados" name="feriados" accept=".ics,.csv">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 7: Modelos de Minutas e Alertas -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">7. Modelos de Minutas e Alertas</legend>
+        <div class="grid gap-4">
+          <!-- 7.1: Checkboxes com botão para pop-up -->
+          <div>
+            <span class="block font-medium mb-2">7.1 Templates Predefinidos</span>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <input type="checkbox" id="tpl1" name="templates" value="template1" class="mr-2">
+                <label for="tpl1" class="mr-4">Template 01</label>
+                <button type="button" onclick="showTemplateDesc('template1')" class="text-blue-600 hover:underline">Ver descrição</button>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="tpl2" name="templates" value="template2" class="mr-2">
+                <label for="tpl2" class="mr-4">Template 02</label>
+                <button type="button" onclick="showTemplateDesc('template2')" class="text-blue-600 hover:underline">Ver descrição</button>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="tpl3" name="templates" value="template3" class="mr-2">
+                <label for="tpl3" class="mr-4">Template 03</label>
+                <button type="button" onclick="showTemplateDesc('template3')" class="text-blue-600 hover:underline">Ver descrição</button>
+              </div>
+              <div class="flex items-center">
+                <input type="checkbox" id="tpl4" name="templates" value="template4" class="mr-2">
+                <label for="tpl4" class="mr-4">Template 04</label>
+                <button type="button" onclick="showTemplateDesc('template4')" class="text-blue-600 hover:underline">Ver descrição</button>
+              </div>
+            </div>
+          </div>
+          <!-- 7.2 Text Template Livre -->
+          <div>
+            <label class="block font-medium" for="template_livre">7.2 Texto Template Livre (08)</label>
+            <textarea class="w-full border rounded p-2" id="template_livre" name="template_livre" rows="3"></textarea>
+          </div>
+          <!-- 7.3 e 7.4 Legislação e Prazo -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-medium" for="legislacao">7.3 Legislação Aplicável</label>
+              <input class="w-full border rounded p-2" type="text" id="legislacao" name="legislacao" placeholder="Artigos e Norma">
+            </div>
+            <div>
+              <label class="block font-medium" for="prazo_regularizacao">7.4 Prazo de Regularização</label>
+              <input class="w-full border rounded p-2" type="text" id="prazo_regularizacao" name="prazo_regularizacao" placeholder="Ex: 5 dias úteis">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 8: Gestão de Utilizadores e Perfis -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">8. Gestão de Utilizadores e Perfis</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="num_usuarios">Número de Utilizadores Previsto</label>
+            <input class="w-full border rounded p-2" type="number" id="num_usuarios" name="num_usuarios">
+          </div>
+          <div>
+            <label class="block font-medium" for="perfis_acesso">Perfis de Acesso Necessários</label>
+            <input class="w-full border rounded p-2" type="text" id="perfis_acesso" name="perfis_acesso" placeholder="Agentes, Supervisores, Administradores">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 9: Ocorrências em Espaço Público -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">9. Ocorrências em Espaço Público</legend>
+        <div class="grid grid-cols-1 gap-4">
+          <div>
+            <label class="block font-medium" for="tipos_ocorrencia">Tipos de Ocorrência</label>
+            <textarea class="w-full border rounded p-2" id="tipos_ocorrencia" name="tipos_ocorrencia" rows="2" placeholder="Ex: parquímetros avariados, sinalética caída"></textarea>
+          </div>
+          <div>
+            <label class="block font-medium" for="sla_ocorrencias">Indicadores SLA</label>
+            <input class="w-full border rounded p-2" type="text" id="sla_ocorrencias" name="sla_ocorrencias" placeholder="Ex: 24h resposta">
+          </div>
+        </div>
+      </fieldset>
+
+     <!-- Seção 10: Volume e Relatórios -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">10. Volume e Relatórios</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="estimativa_notificacoes">Estimativa de Notificações</label>
+            <input class="w-full border rounded p-2" type="text" id="estimativa_notificacoes" name="estimativa_notificacoes" placeholder="Diárias, Mensais, Anuais">
+          </div>
+          <div>
+            <label class="block font-medium">Relatórios Desejados</label>
+            <div class="space-y-2">
+              <label class="inline-flex items-center"><input type="checkbox" name="relatorios[]" value="atividade_agentes" class="mr-2">Atividade dos Agentes</label><br>
+              <label class="inline-flex items-center"><input type="checkbox" name="relatorios[]" value="resumo_diario" class="mr-2">Resumo Diário</label><br>
+              <label class="inline-flex items-center"><input type="checkbox" name="relatorios[]" value="rotas" class="mr-2">Rotas</label><br>
+              <label class="inline-flex items-center"><input type="checkbox" name="relatorios[]" value="faturacao" class="mr-2">Faturação</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Seção 11: Suporte e Manutenção -->
+      <fieldset class="mb-6">
+        <legend class="text-xl font-semibold mb-4">11. Suporte e Manutenção</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-medium" for="nome_contacto_suporte">Nome do Contacto para Suporte</label>
+            <input class="w-full border rounded p-2" type="text" id="nome_contacto_suporte" name="nome_contacto_suporte" placeholder="Nome completo">
+          </div>
+          <div>
+            <label class="block font-medium" for="contato_suporte">Contacto Suporte</label>
+            <input class="w-full border rounded p-2" type="text" id="contato_suporte" name="contato_suporte" placeholder="Email / Telefone">
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Botão de Submissão -->
+      <div class="text-right">
+        <button type="submit" class="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700">Enviar Pedido</button>
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>
