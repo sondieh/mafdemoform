@@ -42,9 +42,9 @@
         </div>
       </fieldset>
 
-      <!-- Seção 2: Contacto -->
+      <!-- Seção 2: Contacto e Suporte Técnico -->
       <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">2. Contacto</legend>
+        <legend class="text-xl font-semibold mb-4">2. Contacto e Suporte Técnico</legend>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block font-medium" for="gestor_nome">Nome do Gestor</label>
@@ -106,6 +106,11 @@
             <label class="block font-medium" for="sibs_swagger">Swagger API (upload)</label>
             <input class="w-full" type="file" id="sibs_swagger" name="sibs_swagger" accept=".json,.yaml">
           </div>
+          <!-- Novo campo para endereço da URL do Swagger -->
+          <div>
+            <label class="block font-medium" for="sibs_swagger_url">URL do Swagger API</label>
+            <input class="w-full border rounded p-2" type="url" id="sibs_swagger_url" name="sibs_swagger_url" placeholder="https://api.sibs.pt/swagger.json">
+          </div>
           <div>
             <label class="block font-medium" for="client_id">Client ID</label>
             <input class="w-full border rounded p-2" type="text" id="client_id" name="client_id" required>
@@ -117,55 +122,52 @@
         </div>
       </fieldset>
 
-      <!-- Seção 5: Hardware Móvel e Impressão -->
-      <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">5. Hardware Móvel e Impressão</legend>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block font-medium" for="smartphones">Smartphones Android (modelos e OS)</label>
-            <input class="w-full border rounded p-2" type="text" id="smartphones" name="smartphones" placeholder="Ex: Samsung A12, Android 11">
-          </div>
-          <div>
-            <label class="block font-medium" for="impressoras">Impressoras Portáteis (modelo e protocolo)</label>
-            <input class="w-full border rounded p-2" type="text" id="impressoras" name="impressoras" placeholder="Ex: Zebra ZQ220, Bluetooth">
-          </div>
-          <div>
-            <label class="block font-medium" for="qr_leitura">Sistema de Leitura de QR Code</label>
-            <input class="w-full border rounded p-2" type="text" id="qr_leitura" name="qr_leitura" placeholder="Ex: Câmara embutida + fallback fotografia">
-          </div>
-          <div>
-            <label class="block font-medium" for="suporte_offline">Suporte Offline Necessário?</label>
-            <select class="w-full border rounded p-2" id="suporte_offline" name="suporte_offline">
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-          </div>
-        </div>
-      </fieldset>
 
-      <!-- Seção 6: Definição de Zonas e Rotas -->
+      <!-- Seção 5: Definição de Zonas e Rotas -->
       <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">6. Definição de Zonas e Rotas</legend>
+        <legend class="text-xl font-semibold mb-4">5. Definição de Zonas e Rotas</legend>
         <div class="mb-4">
           <label class="block font-medium" for="num_zonas">Número de Zonas de Estacionamento</label>
           <input class="w-full border rounded p-2" type="number" id="num_zonas" name="num_zonas">
-        </div>
-        <div class="mb-4">
-          <label class="block font-medium" for="mapa_base">Mapa Base a Utilizar</label>
-          <select class="w-full border rounded p-2" id="mapa_base" name="mapa_base">
-            <option value="openstreetmap">OpenStreetMap</option>
-            <option value="google_maps">Google Maps</option>
-            <option value="outro">Outro</option>
-          </select>
-        </div>
+        </div>        
         <div class="mb-4">
           <label class="block font-medium" for="geojson">Lista de ruas/áreas (GeoJSON/KML)</label>
           <input class="w-full" type="file" id="geojson" name="geojson" accept=".geojson,.kml">
+	  <p class="text-sm text-gray-600 mt-1">Exemplo de modelo de arquivo: <a href="#" class="text-blue-600 
+underline">template-exemplo.geojson</a> ou <a href="#" class="text-blue-600 underline">template-exemplo.kml</a></p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block font-medium" for="vigencia_zonas">Datas e Horários de Vigência</label>
-            <textarea class="w-full border rounded p-2" id="vigencia_zonas" name="vigencia_zonas" rows="2"></textarea>
+        <div class="grid grid-cols-1 gap-4">
+          <label class="block font-medium">Datas e Horários de Vigência</label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Checkbox dias da semana com campo de texto para horário -->
+            <div class="flex items-center space-x-2">
+              <label><input type="checkbox" name="vigencia_dia[]" value="Seg"> Seg</label>
+              <input class="border rounded p-1 flex-1" type="text" name="horario_S" placeholder="hh:mm-hh:mm">
+            </div>
+            <div class="flex items-center space-x-2">
+              <label><input type="checkbox" name="vigencia_dia[]" value="Ter"> Ter</label>
+              <input class="border rounded p-1 flex-1" type="text" name="horario_T" placeholder="hh:mm-hh:mm">
+            </div>
+            <div class="flex items-center space-x-2">
+              <label><input type="checkbox" name="vigencia_dia[]" value="Qua"> Qua</label>
+              <input class="border rounded p-1 flex-1" type="text" name="horario_Q1" placeholder="hh:mm-hh:mm">
+            </div>
+            <div class="flex items-center space-x-2">
+              <label><input type="checkbox" name="vigencia_dia[]" value="Qui"> Qui</label>
+              <input class="border rounded p-1 flex-1" type="text" name="horario_Q2" placeholder="hh:mm-hh:mm">
+            </div>
+            <div class="flex items-center space-x-2">
+              <label><input type="checkbox" name="vigencia_dia[]" value="Sex"> Sex</label>
+              <input class="border rounded p-1 flex-1" type="text" name="horario_S2" placeholder="hh:mm-hh:mm">
+            </div>
+            <div class="flex items-center space-x-2">
+              <label><input type="checkbox" name="vigencia_dia[]" value="Sab"> Sab</label>
+              <input class="border rounded p-1 flex-1" type="text" name="horario_S3" placeholder="hh:mm-hh:mm">
+            </div>
+            <div class="flex items-center space-x-2">
+              <label><input type="checkbox" name="vigencia_dia[]" value="Dom"> Dom</label>
+              <input class="border rounded p-1 flex-1" type="text" name="horario_D" placeholder="hh:mm-hh:mm">
+            </div>
           </div>
           <div>
             <label class="block font-medium" for="feriados">Feriados (upload calendário)</label>
@@ -174,13 +176,13 @@
         </div>
       </fieldset>
 
-      <!-- Seção 7: Modelos de Minutas e Alertas -->
+      <!-- Seção 6: Modelos de Minutas e Alertas -->
       <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">7. Modelos de Minutas e Alertas</legend>
+        <legend class="text-xl font-semibold mb-4">6. Modelos de Minutas e Alertas</legend>
         <div class="grid gap-4">
-          <!-- 7.1: Checkboxes com botão para pop-up -->
+          <!-- 6.1: Checkboxes com botão para pop-up -->
           <div>
-            <span class="block font-medium mb-2">7.1 Templates Predefinidos</span>
+            <span class="block font-medium mb-2">6.1 Templates Predefinidos</span>
             <div class="space-y-2">
               <div class="flex items-center">
                 <input type="checkbox" id="tpl1" name="templates" value="template1" class="mr-2">
@@ -204,28 +206,28 @@
               </div>
             </div>
           </div>
-          <!-- 7.2 Text Template Livre -->
+          <!-- 6.2 Text Template Livre -->
           <div>
-            <label class="block font-medium" for="template_livre">7.2 Texto Template Livre (08)</label>
+            <label class="block font-medium" for="template_livre">6.2 Texto Template Livre (08)</label>
             <textarea class="w-full border rounded p-2" id="template_livre" name="template_livre" rows="3"></textarea>
           </div>
-          <!-- 7.3 e 7.4 Legislação e Prazo -->
+          <!-- 6.3 e 6.4 Legislação e Prazo -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block font-medium" for="legislacao">7.3 Legislação Aplicável</label>
+              <label class="block font-medium" for="legislacao">6.3 Legislação Aplicável</label>
               <input class="w-full border rounded p-2" type="text" id="legislacao" name="legislacao" placeholder="Artigos e Norma">
             </div>
             <div>
-              <label class="block font-medium" for="prazo_regularizacao">7.4 Prazo de Regularização</label>
+              <label class="block font-medium" for="prazo_regularizacao">6.4 Prazo de Regularização</label>
               <input class="w-full border rounded p-2" type="text" id="prazo_regularizacao" name="prazo_regularizacao" placeholder="Ex: 5 dias úteis">
             </div>
           </div>
         </div>
       </fieldset>
 
-      <!-- Seção 8: Gestão de Utilizadores e Perfis -->
+      <!-- Seção 7: Gestão de Utilizadores e Perfis -->
       <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">8. Gestão de Utilizadores e Perfis</legend>
+        <legend class="text-xl font-semibold mb-4">7. Gestão de Utilizadores e Perfis</legend>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block font-medium" for="num_usuarios">Número de Utilizadores Previsto</label>
@@ -238,24 +240,22 @@
         </div>
       </fieldset>
 
-      <!-- Seção 9: Ocorrências em Espaço Público -->
+      <!-- Seção 8: Ocorrências em Espaço Público -->
       <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">9. Ocorrências em Espaço Público</legend>
+        <legend class="text-xl font-semibold mb-4">8. Ocorrências em Espaço Público</legend>
         <div class="grid grid-cols-1 gap-4">
           <div>
             <label class="block font-medium" for="tipos_ocorrencia">Tipos de Ocorrência</label>
             <textarea class="w-full border rounded p-2" id="tipos_ocorrencia" name="tipos_ocorrencia" rows="2" placeholder="Ex: parquímetros avariados, sinalética caída"></textarea>
           </div>
           <div>
-            <label class="block font-medium" for="sla_ocorrencias">Indicadores SLA</label>
-            <input class="w-full border rounded p-2" type="text" id="sla_ocorrencias" name="sla_ocorrencias" placeholder="Ex: 24h resposta">
           </div>
         </div>
       </fieldset>
 
-     <!-- Seção 10: Volume e Relatórios -->
+     <!-- Seção 9: Volume e Relatórios -->
       <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">10. Volume e Relatórios</legend>
+        <legend class="text-xl font-semibold mb-4">9. Volume e Relatórios</legend>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block font-medium" for="estimativa_notificacoes">Estimativa de Notificações</label>
@@ -273,13 +273,14 @@
         </div>
       </fieldset>
 
-      <!-- Seção 11: Suporte e Manutenção -->
+ 
+      <!-- Seção 10: Suporte e Manutenção -->
       <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">11. Suporte e Manutenção</legend>
+        <legend class="text-xl font-semibold mb-4">10. Suporte e Manutenção</legend>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block font-medium" for="nome_contacto_suporte">Nome do Contacto para Suporte</label>
-            <input class="w-full border rounded p-2" type="text" id="nome_contacto_suporte" name="nome_contacto_suporte" placeholder="Nome completo">
+            <input class="w-full border rounded p-2" type="text" id="nome_contacto_suporte" name="nome_contacto_suporte" placeholder="Ex: João Alves">
           </div>
           <div>
             <label class="block font-medium" for="contato_suporte">Contacto Suporte</label>
