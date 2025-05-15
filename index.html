@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rascunho Formulário MAF - Câmara Municipal</title>
+  <title>Rascunho Formulário Implementação - Câmara Municipal</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 p-6">
   <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow">
-    <h1 class="text-2xl font-bold mb-6">Formulário de Implementação do Módulo de Avisos & Fiscalização (MAF)</h1>
+    <h1 class="text-2xl font-bold mb-6">Formulário de Implementação Módulos de Mobilidade </h1>
     <form id="form-maf" action="#" method="POST">
 
       <!-- Seção 1: Dados da Entidade -->
@@ -32,8 +32,8 @@
             <input class="w-full border rounded p-2" type="text" id="capital_social" name="capital_social" placeholder="Ex: €100.000" required>
           </div>
           <div>
-            <label class="block font-medium" for="endereco">Endereço</label>
-            <input class="w-full border rounded p-2" type="text" id="endereco" name="endereco" placeholder="Rua Exemplo, 123, Lisboa" required>
+            <label class="block font-medium" for="endereco">Morada Completa</label>
+            <input class="w-full border rounded p-2" type="text" id="morada" name="morada" placeholder="Rua Exemplo, 123, Lisboa, Lisboa, 2000-222" required>
           </div>
           <div>
             <label class="block font-medium" for="logo">Logótipo (upload)</label>
@@ -140,32 +140,33 @@ underline">template-exemplo.geojson</a> ou <a href="#" class="text-blue-600 unde
           <label class="block font-medium">Datas e Horários de Vigência</label>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Checkbox dias da semana com campo de texto para horário -->
+              <div class="flex items-center space-x-2">
+			<input type="hidden" name="vigencia_dia[]" value="Seg">
+			  <label>Seg</label>
+			  <input class="border rounded p-1 flex-1" type="text" name="horario_S" placeholder="hh:mm-hh:mm">
+			</div>
             <div class="flex items-center space-x-2">
-              <label><input type="checkbox" name="vigencia_dia[]" value="Seg"> Seg</label>
-              <input class="border rounded p-1 flex-1" type="text" name="horario_S" placeholder="hh:mm-hh:mm">
-            </div>
-            <div class="flex items-center space-x-2">
-              <label><input type="checkbox" name="vigencia_dia[]" value="Ter"> Ter</label>
+              <label><input type="hidden" name="vigencia_dia[]" value="Ter"> Ter</label>
               <input class="border rounded p-1 flex-1" type="text" name="horario_T" placeholder="hh:mm-hh:mm">
             </div>
             <div class="flex items-center space-x-2">
-              <label><input type="checkbox" name="vigencia_dia[]" value="Qua"> Qua</label>
+              <label><input type="hidden" name="vigencia_dia[]" value="Qua"> Qua</label>
               <input class="border rounded p-1 flex-1" type="text" name="horario_Q1" placeholder="hh:mm-hh:mm">
             </div>
             <div class="flex items-center space-x-2">
-              <label><input type="checkbox" name="vigencia_dia[]" value="Qui"> Qui</label>
+              <label><input type="hidden" name="vigencia_dia[]" value="Qui"> Qui</label>
               <input class="border rounded p-1 flex-1" type="text" name="horario_Q2" placeholder="hh:mm-hh:mm">
             </div>
             <div class="flex items-center space-x-2">
-              <label><input type="checkbox" name="vigencia_dia[]" value="Sex"> Sex</label>
+              <label><input type="hidden" name="vigencia_dia[]" value="Sex"> Sex</label>
               <input class="border rounded p-1 flex-1" type="text" name="horario_S2" placeholder="hh:mm-hh:mm">
             </div>
             <div class="flex items-center space-x-2">
-              <label><input type="checkbox" name="vigencia_dia[]" value="Sab"> Sab</label>
+              <label><input type="hidden" name="vigencia_dia[]" value="Sab"> Sab</label>
               <input class="border rounded p-1 flex-1" type="text" name="horario_S3" placeholder="hh:mm-hh:mm">
             </div>
             <div class="flex items-center space-x-2">
-              <label><input type="checkbox" name="vigencia_dia[]" value="Dom"> Dom</label>
+              <label><input type="hidden" name="vigencia_dia[]" value="Dom"> Dom</label>
               <input class="border rounded p-1 flex-1" type="text" name="horario_D" placeholder="hh:mm-hh:mm">
             </div>
           </div>
@@ -288,6 +289,52 @@ underline">template-exemplo.geojson</a> ou <a href="#" class="text-blue-600 unde
           </div>
         </div>
       </fieldset>
+
+      
+<!-- Novo campo: Assinatura Digital -->
+<div class="mb-4">
+    <label for="assinaturaDigital" class="block font-medium">Assinatura Digital</label>
+    <select id="assinaturaDigital" name="assinaturaDigital" class="w-full border rounded p-2">
+        <option value="" disabled selected>Selecione uma opção</option>
+        <option value="autenticacaoGov">Autenticação Gov</option>
+        <option value="gts">GTS</option>
+    </select>
+</div>
+
+<!-- Novo campo: CIM -->
+<div class="mb-4">
+    <label for="cim" class="block font-medium">É uma Comunidade Intermunicipal (CIM)?</label>
+    <select id="cim" name="cim" class="w-full border rounded p-2">
+        <option value="" disabled selected>Selecione uma opção</option>
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
+    </select>
+</div>
+
+<!-- Novo campo: Aplicações -->
+<div class="mb-6">
+    <label class="block font-medium mb-2">Quais as aplicações que pretende usar?</label>
+    <div class="space-y-2">
+        <label class="flex items-center">
+            <input type="checkbox" name="aplicacoes[]" value="fiscalizacao" class="mr-2">
+            Módulo Fiscalização de estacionamento
+        </label>
+        <label class="flex items-center">
+            <input type="checkbox" name="aplicacoes[]" value="disticos" class="mr-2">
+            Dísticos para residentes e Comerciantes
+        </label>
+        <label class="flex items-center">
+            <input type="checkbox" name="aplicacoes[]" value="contraordenacoes" class="mr-2">
+            Módulo Contraordenações de Estacionamento
+        </label>
+        <label class="flex items-center">
+            <input type="checkbox" name="aplicacoes[]" value="instrucao" class="mr-2">
+            Módulo Instrução e Decisão
+        </label>
+    </div>
+</div>
+
+
 
       <!-- Botão de Submissão -->
       <div class="text-right">
