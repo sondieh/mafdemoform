@@ -61,30 +61,36 @@
         </div>
       </fieldset>
 
-      <!-- Seção 3: Infraestrutura TI -->
-      <fieldset class="mb-6">
-        <legend class="text-xl font-semibold mb-4">3. Infraestrutura e Ambiente TI</legend>
-        <div class="mb-4">
-          <label class="block font-medium">Ambiente de Alojamento</label>
-          <select class="w-full border rounded p-2" name="ambiente_alojamento">
-            <option value="cloud">Cloud (especificar fornecedor)</option>
-            <option value="on_premises">On-Premises</option>
-          </select>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block font-medium" for="firewall_vpn">Firewall/VPN</label>
-            <input class="w-full border rounded p-2" type="text" id="firewall_vpn" name="firewall_vpn" placeholder="Ex: Rede Privada VLAN">
-          </div>
-          <div>
-            <label class="block font-medium" for="ssl_certificados">Certificados SSL/TLS</label>
-            <select class="w-full border rounded p-2" id="ssl_certificados" name="ssl_certificados">
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-          </div>
-        </div>
-      </fieldset>
+
+<!-- Seção 3: Infraestrutura TI -->
+<fieldset class="mb-6">
+  <legend class="text-xl font-semibold mb-4">3. Infraestrutura e Ambiente TI</legend>
+
+  <div class="mb-4">
+    <label class="block font-medium">Ambiente de Alojamento</label>
+    <select class="w-full border rounded p-2" name="ambiente_alojamento">
+      <option value="" disabled selected>Selecione uma opção</option>
+      <option value="cloud">Cloud (especificar fornecedor)</option>
+      <option value="on_premises">On-Premises</option>
+    </select>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block font-medium" for="firewall_vpn">Firewall/VPN</label>
+      <input class="w-full border rounded p-2" type="text" id="firewall_vpn" name="firewall_vpn" placeholder="Ex: Rede Privada VLAN">
+    </div>
+    <div>
+      <label class="block font-medium" for="ssl_certificados">Certificados SSL/TLS</label>
+      <select class="w-full border rounded p-2" id="ssl_certificados" name="ssl_certificados">
+        <option value="" disabled selected>Selecione uma opção</option>
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
+      </select>
+    </div>
+  </div>
+</fieldset>
+
 
       <!-- Seção 4: Integrações de Pagamento e API -->
       <fieldset class="mb-6">
